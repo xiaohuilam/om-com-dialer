@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Om-Com Dialer HTML5 WebApp to easily construct a dialing number and passcode
+on a phone.
+Copyright (C) 2012 Jordan Reed
+    
+Conference Dialer is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Conference Dialer is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html lang="en" manifest="cdial.manifest">
+  <head>
+    <title>Om-Com</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script type="text/javascript" src="main.js" charset="utf-8"></script>
+    <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone4.png" />
+    <link rel = "stylesheet" href = "iPhoneButtons.css" />
+	<link rel = "stylesheet" href = "iPhoneForm.css" />
+  </head>
+  <body onload="loadProperties();">
+    <div id="mainscreen" class="flipcard">
+      <div class="titlebar">
+        <div>Om-Com Dialer</div>
+        <div class="rightTitleButton" onclick="doEdit();">Edit</div>
+      </div>
+      <div class="inputform">
+        <form id="callform" action="tel:">
+            <label for="number">Number</label>
+            <input class="textinput" type="tel" name="number" id="number" onblur="updatenumber();" />
+            <label for="code">Code</label>
+            <input class="textinput" type="tel" name="code" id="code" onblur="updatenumber();" />
+        </form>
+      </div>
+      <p>
+        <a class="unchecked white button" id="gvoicebutton" onclick="toggleGvoice();" href="#">&#x2610; GVoice</a>
+        <input type="hidden" name="gvoice" id="gvoice" value="false" />
+      </p>
+      <p><a class="white button" id="callbutton" href="#" onclick="submitForm();">Call</a></p>
+    </div>
+    <div id="settingsScreen" class="flipped flipcard">
+      <div class="titlebar">
+        <div>Settings</div>
+        <div class="leftTitleButton" onclick="doBack();">Back</div>
+      </div>
+      <div class="inputform">
+        <form action="#">
+            <label for="number">GNumber</label>
+            <input class="textinput" type="tel" name="gvoice" id="gnumber" onblur="updatenumber();" />
+            <label for="code">GCode</label>
+            <input class="textinput" type="tel" name="gcode" id="gcode" onblur="updatenumber();" />
+        </form>
+      </div>
+      <div class="copyright">
+        <p>Copyright &copy; 2012 Jordan Reed</p>
+        <div id="licensediv"><a href="license/GPLv30.html">Show GPLv3 License</a></div>
+      </div>
+    </div>
+  </body>
+</html>

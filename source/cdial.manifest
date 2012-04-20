@@ -1,0 +1,39 @@
+CACHE MANIFEST
+# Om-Com Dialer HTML5 WebApp to easily construct a dialing number and passcode
+# on a phone.
+# Copyright (C) 2012 Jordan Reed
+# 
+# Conference Dialer is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# Conference Dialer is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
+
+# Cache manifest version 0.0.10
+apple-touch-icon-ipad.png
+apple-touch-icon-iphone.png
+apple-touch-icon-iphone4.png
+cdial.manifest
+images
+images/blueButton.png
+images/grayButton.png
+images/leftButton.png
+images/rightButton.png
+images/smallBlueBackButton.png
+images/smallBlueButton.png
+images/titleBackground.png
+images/whiteButton.png
+index.html
+iPhoneButtons.css
+iPhoneForm.css
+license/GPLv30.html
+main.js
+
+
