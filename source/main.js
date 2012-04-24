@@ -60,7 +60,7 @@ function updatenumber() {
 }
 
 function updateCallButton() {
-  var callform = document.getElementById("callform");
+  var callform = document.getElementById("callbutton");
   var fullnumber = "tel:";
 
   if(gvoice == "true") {
@@ -77,7 +77,7 @@ function updateCallButton() {
    fullnumber = fullnumber + ",,," + code + "#";
   }
   
-  callform.action = fullnumber;
+  callform.href = fullnumber;
 }
 
 function toggleGvoice() {
@@ -103,11 +103,6 @@ function toggleGvoice() {
     updateCallButton();
     saveProperties();
   }
-}
-
-function submitForm() {
-  var callform = document.getElementById("callform");
-  callform.submit();
 }
 
 function doEdit() {

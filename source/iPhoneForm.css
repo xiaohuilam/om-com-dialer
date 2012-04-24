@@ -18,7 +18,7 @@ along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
 */
 .flipcard {
   position: absolute;
-  top: 0px;
+  top: 20px;
   left: 0px;
   width: 320px;
   -webkit-transition: 1.5s; 
