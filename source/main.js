@@ -22,6 +22,11 @@ var gvoice = "false";
 var gnumber;
 var gcode;
 
+function startup() {
+  loadProperties();
+  window.scrollTo(0, 1);
+}
+
 function updatenumber() {
   var tempNumber = document.getElementById("number").value;
   var tempCode = document.getElementById("code").value;
