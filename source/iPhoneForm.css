@@ -29,12 +29,31 @@ along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
   -webkit-transform: rotateY(180deg); 
 }
 
+.padTop {
+  margin-top: 20px;
+}
+
+.settings {
+  background-image:
+    -webkit-repeating-linear-gradient(left, #C5CCD4, #C5CCD4 5pt, #CBD2D8 4pt, #CBD2D8 6pt);
+}
+
 /*
-  -webkit-transform: translateX(320px); 
+"White" #CBD2D8
+"Blue" #C5CCD4
+
 */
 
 div.copyright {
   text-align: center;
+}
+
+div#mainscreen {
+  min-height: 490px;
+}
+
+div#settingsScreen {
+  height: 100%;
 }
 
 .titlebar {
@@ -43,7 +62,7 @@ div.copyright {
 	text-decoration: none;
 	text-align: center;
     display: block;
-	line-height: 46px;	 
+	line-height: 44px;	 
 	font-size: 18px;
     margin-left: auto;
     margin-right: auto;
