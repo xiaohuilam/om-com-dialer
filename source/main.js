@@ -78,7 +78,7 @@ function updateCallButton() {
   var fullnumber = "tel:";
 
   if(gvoice == "true") {
-    fullnumber = fullnumber + gnumber + "," + gcode + ",2,";
+    fullnumber = fullnumber + gnumber + "," + gcode + ",*,2,";
   }
   
   fullnumber = fullnumber + number;
