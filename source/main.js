@@ -94,6 +94,13 @@ function updateCallButton() {
   callform.href = fullnumber;
 }
 
+function resetForm() {
+  document.getElementById("number").value = "";
+  document.getElementById("code").value = "";
+  document.getElementById("number").focus();
+  updatenumber();
+}
+
 function toggleGvoice() {
   var tempGvoiceToggle = document.getElementById("gvoice").value;
 
