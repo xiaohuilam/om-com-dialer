@@ -16,11 +16,10 @@ CACHE MANIFEST
 # You should have received a copy of the GNU General Public License
 # along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
 
-# Cache manifest version 0.1.15
+# Cache manifest version 0.1.16
 apple-touch-icon-ipad.png
 apple-touch-icon-iphone.png
 apple-touch-icon-iphone4.png
-cdial.manifest
 images
 images/blueButton.png
 images/grayButton.png
@@ -33,8 +32,7 @@ images/whiteButton.png
 index.html
 iPhoneButtons.css
 iPhoneForm.css
+license
 license/GPLv30.html
 main.js
 startup.png
-
-

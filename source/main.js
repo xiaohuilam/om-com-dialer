@@ -24,16 +24,8 @@ var gcode;
 
 function startup() {
   loadProperties();
+  updatenumber();
   window.scrollTo(0, 1);
-
-  if(!window.navigator.standalone) {
-    oldClass = document.getElementById("mainscreen").getAttribute("class");
-    newClass = oldClass.replace(" padTop", "");
-    document.getElementById("mainscreen").setAttribute("class", newClass);  
-    oldClass = document.getElementById("settingsScreen").getAttribute("class");
-    newClass = oldClass.replace(" padTop", "");
-    document.getElementById("settingsScreen").setAttribute("class", newClass);  
-  }
 }
 
 function updatenumber() {
