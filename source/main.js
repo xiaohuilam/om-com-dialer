@@ -22,51 +22,79 @@ var gvoice = "false";
 var gnumber;
 var gcode;
 
+/*
+ * The main startup function used to bind javascript functions to all the
+ * required elements as well as to load properties and complete setup.
+ */
 function startup() {
+  // Setup all the handlers in the main page
+  $('#editButton').click(doEdit);
+  
+  $('#number').blur(updatenumber);
+  $('#code').blur(updatenumber);
+  $('#gvoicebutton').click(toggleGvoice);
+  $('#callbutton').click(updatenumber);
+  $('#resetbutton').click(resetForm);
+  
+  $('#backbutton').click(doBack);
+  $('#gnumber').blur(updatenumber);
+  $('#gcode').blur(updatenumber);
+
   loadProperties();
   updatenumber();
   window.scrollTo(0, 1);
 }
 
-function updatenumber() {
-  var tempNumber = document.getElementById("number").value;
-  var tempCode = document.getElementById("code").value;
-  var tempGNumber = document.getElementById("gnumber").value;
-  var tempGCode = document.getElementById("gcode").value;
+/**
+ * Update Number will read the fields out of the Google Plus Settings and
+ * on the page and construct the full number to call.  Then it will update
+ * the link in the number itself.
+ */
+function updatenumber() {  
+  var tempNumber = $("#number").val();
+  var tempCode = $("#code").val();
+  var tempGNumber = $("#gnumber").val();
+  var tempGCode = $("#gcode").val();
   
-  
+  // Set that there is no dirty variables.
+  // At the end if something has become dirty the saved values
+  // must be updated.
+  var dirty = false;
   if(tempNumber != number) {
     tempNumber = tempNumber.replace(/[^0-9]/g, '');
     number = tempNumber;
-    document.getElementById("number").value = number;
+    $("#number").val(number);
     updateCallButton();
-    saveProperties();
+    dirty = true;
   }
   if(tempCode != code) {
     tempCode = tempCode.replace(/[^0-9]/g, '');
     code = tempCode;
-    document.getElementById("code").value = code;
+    $("#code").val(code);
     updateCallButton();
-    saveProperties();
+    dirty = true;
   }
   if(tempGNumber != gnumber) {
     tempGNumber = tempGNumber.replace(/[^0-9]/g, '');
     gnumber = tempGNumber;
-    document.getElementById("gnumber").value = gnumber;
+    $("#gnumber").val(gnumber);
     updateCallButton();
-    saveProperties();
+    dirty = true;
   }
   if(tempGCode != gcode) {
     tempGCode = tempGCode.replace(/[^0-9]/g, '');
     gcode = tempGCode;
-    document.getElementById("gcode").value = gcode;
+    $("#gcode").val(gcode);
     updateCallButton();
-    saveProperties();
+    dirty = true;
+  }
+  
+  if(dirty == true) {
+	  saveProperties();
   }
 }
 
 function updateCallButton() {
-  var callform = document.getElementById("callbutton");
   var fullnumber = "tel:";
 
   if(gvoice == "true") {
@@ -79,17 +107,17 @@ function updateCallButton() {
     fullnumber = fullnumber + "#";
   }
     
-  if(code.length > 0) {
+  if(code != null && code.length > 0) {
    fullnumber = fullnumber + ",,," + code + "#";
   }
   
-  callform.href = fullnumber;
+  $("#callbutton").attr('href', fullnumber);
 }
 
 function resetForm() {
-  document.getElementById("number").value = "";
-  document.getElementById("code").value = "";
-  document.getElementById("number").focus();
+  $("#number").val("");
+  $("#code").val("");
+  $("#number").focus();
   updatenumber();
 }
 
@@ -97,47 +125,30 @@ function toggleGvoice() {
   var tempGvoiceToggle = document.getElementById("gvoice").value;
 
   if("false" == tempGvoiceToggle) {
-    document.getElementById("gvoice").value = "true";
-    document.getElementById("gvoicebutton").innerHTML = "&#x2611; GVoice";
     gvoice = "true";
-    var oldClass = document.getElementById("gvoicebutton").getAttribute("class");
-    var newClass = oldClass.replace("unchecked ", "");
-    document.getElementById("gvoicebutton").setAttribute("class", newClass);
+    $("#gvoice").val("true");
+    $("#gvoicebutton").html("&#x2611; GVoice");
+    $("#gvoicebutton").removeClass("unchecked");
     updateCallButton();
     saveProperties();
   } else {
-    document.getElementById("gvoice").value = "false";
-    document.getElementById("gvoicebutton").innerHTML = "&#x2610; GVoice";
     gvoice = "false";
-    var oldClass = document.getElementById("gvoicebutton").getAttribute("class");
-    var newClass = oldClass.replace("unchecked ", "");
-    newClass = "unchecked " + newClass;
-    document.getElementById("gvoicebutton").setAttribute("class", newClass);
+    $("#gvoice").val("false");
+    $("#gvoicebutton").html("&#x2610; GVoice");
+    $("#gvoicebutton").addClass("unchecked");
     updateCallButton();
     saveProperties();
   }
 }
 
 function doEdit() {
-  var oldClass = document.getElementById("mainscreen").getAttribute("class");
-  var newClass = oldClass.replace("flipped ", "");
-  newClass = "flipped " + newClass;
-  document.getElementById("mainscreen").setAttribute("class", newClass);
-
-  oldClass = document.getElementById("settingsScreen").getAttribute("class");
-  newClass = oldClass.replace("flipped ", "");
-  document.getElementById("settingsScreen").setAttribute("class", newClass);
+  $("#settingsScreen").removeClass("flipped");
+  $("#mainscreen").addClass("flipped");
 }
 
 function doBack() {
-  var oldClass = document.getElementById("settingsScreen").getAttribute("class");
-  var newClass = oldClass.replace("flipped ", "");
-  newClass = "flipped " + newClass;
-  document.getElementById("settingsScreen").setAttribute("class", newClass);
-
-  oldClass = document.getElementById("mainscreen").getAttribute("class");
-  newClass = oldClass.replace("flipped ", "");
-  document.getElementById("mainscreen").setAttribute("class", newClass);
+  $("#mainscreen").removeClass("flipped");
+  $("#settingsScreen").addClass("flipped");
 }
 
 function saveProperties() {
@@ -158,22 +169,18 @@ function loadProperties() {
     gnumber = localStorage.getItem("gnumber");
     gcode = localStorage.getItem("gcode");
     
-    document.getElementById("number").value = number;
-    document.getElementById("code").value = code;
-    document.getElementById("gvoice").value = gvoice;
-    document.getElementById("gnumber").value = gnumber;
-    document.getElementById("gcode").value = gcode;
+    $("#number").val(number);
+    $("#code").val(code);
+    $("#gvoice").val(gvoice);
+    $("#gnumber").val(gnumber);
+    $("#gcode").val(gcode);
+
     if("true" == gvoice) {
-      document.getElementById("gvoicebutton").innerHTML = "&#x2611; GVoice";
-      var oldClass = document.getElementById("gvoicebutton").getAttribute("class");
-      var newClass = oldClass.replace("unchecked ", "");
-      document.getElementById("gvoicebutton").setAttribute("class", newClass);
+	  $("#gvoicebutton").html("&#x2611; GVoice");
+	  $("#gvoicebutton").removeClass("unchecked");
     } else {
-      document.getElementById("gvoicebutton").innerHTML = "&#x2610; GVoice";
-      var oldClass = document.getElementById("gvoicebutton").getAttribute("class");
-      var newClass = oldClass.replace("unchecked ", "");
-      newClass = "unchecked " + newClass;
-      document.getElementById("gvoicebutton").setAttribute("class", newClass);
+	  $("#gvoicebutton").html("&#x2610; GVoice");
+	  $("#gvoicebutton").addClass("unchecked");
     }
 
     updateCallButton();

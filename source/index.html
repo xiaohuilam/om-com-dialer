@@ -25,7 +25,9 @@ along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
 , user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
+
     <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-ipad.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-iphone4.png" />
@@ -37,33 +39,34 @@ along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
     <div id="mainscreen" class="flipcard">
       <div class="titlebar">
         <div>Om-Com Dialer</div>
-        <div class="rightTitleButton" onclick="doEdit();">Edit</div>
+        <div id="editButton" class="rightTitleButton">Edit</div>
       </div>
       <div class="inputform">
         <form id="callform" action="#">
             <label for="number">Number</label>
-            <input class="textinput" type="tel" name="number" id="number" onblur="updatenumber();" />
+            <input class="textinput" type="tel" name="number" id="number" />
             <label for="code">Code</label>
-            <input class="textinput" type="tel" name="code" id="code" onblur="updatenumber();" />
+            <input class="textinput" type="tel" name="code" id="code" />
         </form>
       </div>
       <p>
-        <a class="unchecked white button" id="gvoicebutton" onclick="toggleGvoice();" href="#">&#x2610; GVoice</a>
+        <a class="unchecked white button" id="gvoicebutton" href="#">&#x2610; GVoice</a>
         <input type="hidden" name="gvoice" id="gvoice" value="false" />
       </p>
-      <p><a class="white button" id="callbutton" onclick="updatenumber();" href="tel:">Call</a></p>
+      <p><a class="white button" id="callbutton" href="tel:">Call</a></p>
+      <p><a class="white button" id="resetbutton" href="#">Reset</a></p>
     </div>
     <div id="settingsScreen" class="flipped flipcard settings">
       <div class="titlebar">
         <div>Settings</div>
-        <div class="leftTitleButton" onclick="doBack();">Back</div>
+        <div id="backbutton" class="leftTitleButton">Back</div>
       </div>
       <div class="inputform">
         <form action="#">
             <label for="number">GNumber</label>
-            <input class="textinput" type="tel" name="gvoice" id="gnumber" onblur="updatenumber();" />
+            <input class="textinput" type="tel" name="gvoice" id="gnumber" />
             <label for="code">GCode</label>
-            <input class="textinput" type="tel" name="gcode" id="gcode" onblur="updatenumber();" />
+            <input class="textinput" type="tel" name="gcode" id="gcode" />
         </form>
       </div>
       <div class="copyright">
