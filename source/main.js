@@ -40,6 +40,8 @@ function startup() {
   $('#gnumber').blur(updatenumber);
   $('#gcode').blur(updatenumber);
 
+  window.addEventListener('shake', resetForm, false);
+  
   loadProperties();
   updatenumber();
   window.scrollTo(0, 1);
