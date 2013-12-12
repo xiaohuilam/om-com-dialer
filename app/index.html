@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+Om-Com Dialer HTML5 WebApp to easily construct a dialing number and passcode
+on a phone.
+Copyright (C) 2012 Jordan Reed
+    
+Om-Com Dialer is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Conference Dialer is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Conference Dialer.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html lang="en">
+  <head>
+    <title>Om-Com</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" charset="utf-8"></script>
+  	<script src="https://raw.github.com/alexgibson/shake.js/master/shake.js"></script>
+	<!-- build:js js/main.js -->
+    <script type="text/javascript" src="scripts/main.js" charset="utf-8"></script>
+    <!-- endbuild -->
+
+    <link rel="apple-touch-icon" href="images/apple-touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-iphone4.png" />
+    <link rel="apple-touch-startup-image" href="images/startup.png">
+    
+	<!-- build:css(app) styles/modules.css -->
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
+    <!-- endbuild -->
+    <!-- build:css(app) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:800,400,300' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">    
+  </head>
+  <body>
+    <div id="mainpage" class="page">
+		<div class="header">
+			<div class="leftheaderbutton" id="settingsbutton"><i class="fa fa-cog"></i></div>
+			<div class="title">Om-Com Dialer</div>
+		</div>
+		<div class="content">
+	        <form id="callform" action="#">
+				<ul class="tableView">
+					<li>
+						<b><label for="number">Number</label></b>
+						<span class="subtitle"><input class="textinput" type="tel" name="number" id="number" /></span>
+					</li>
+					<li>
+						<b><label for="code">Code</label></b>
+						<span class="subtitle"><input class="textinput" type="tel" name="code" id="code" /></span>
+					</li>
+					<li id="gvoicebutton">
+						<b>GVoice</b>
+						<span class="subtitle"></span>
+					</li>
+					<li><a id="callbutton" href="tel:">Call</a></li>
+					<li><a id="resetbutton" href="#">Reset</a></li>
+				</ul>
+		        <input type="hidden" name="gvoice" id="gvoice" value="false" />
+	        </form>
+		</div>
+    </div>
+    <div id="settingsScreen" class="page" style="display:none;">
+		<div class="header">
+	      <div class="rightheaderbuttonblue" id="settingsdone">Done</div>
+	      <div class="title">Settings</div>
+		</div>
+      <div class="content">
+        <form action="#">
+			<ul class="tableView settings">
+				<li>
+					<b><label for="number">GNumber</label></b>
+					<span class="subtitle"><input class="textinput" type="tel" name="gvoice" id="gnumber" /></span>
+				</li>
+				<li>
+					<b><label for="number">GCode</label></b>
+					<span class="subtitle"><input class="textinput" type="tel" name="gcode" id="gcode" /></span>
+				</li>
+			</ul>
+        </form>
+		<div class="tbHeader">Om-Com Dialer</div>
+		<ul class="tableView">
+		  <li id="showaboutepisodenext"><b>Copyright</b><span class="subtitle">&copy; 2012 Jordan Reed</span></li>
+		  <li id="showaboutepisodenext"><b>License</b><span class="subtitle"><a href="license/GPLv30.html">Show GPLv3 License</a></span></li>
+		</ul>
+      </div>
+    </div>
+  </body>
+</html>

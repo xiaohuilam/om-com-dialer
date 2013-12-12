@@ -1,0 +1,7 @@
+When install bower - go to the /app directory
+
+Run the server:
+* grunt serve
+
+Build the Optimized App:
+* grunt
